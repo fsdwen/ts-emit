@@ -1,13 +1,19 @@
-import { EmitArgs, Emitter, EventHandlerMap, Listener } from "./types";
+import {
+  EmitArgs,
+  Emitter,
+  EventHandlerMap,
+  EventType,
+  Listener,
+} from "./types";
 
-export class EventEmitter<Events extends Record<string, unknown>>
+export class EventEmitter<Events extends Record<EventType, unknown>>
   implements Emitter<Events>
 {
   all: EventHandlerMap<any> = new Map();
 
-  on<Key extends keyof Events, T = Events[Key]>(
+  on<Key extends keyof Events>(
     event: Key,
-    listener: Listener<T>
+    listener: Listener<Events[Key]>
   ): void {
     const existingListeners = this.all.get(event);
     if (existingListeners) {
@@ -17,11 +23,13 @@ export class EventEmitter<Events extends Record<string, unknown>>
     }
   }
 
-  off<Key extends keyof Events, T = Events[Key]>(
+  off<Key extends keyof Events>(
     event: Key,
-    listener: Listener<T>
+    listener: Listener<Events[Key]>
   ): void {
-    const existingListeners = this.all.get(event) as Listener<T>[] | undefined;
+    const existingListeners = this.all.get(event) as
+      | Listener<Events[Key]>[]
+      | undefined;
     if (!existingListeners) {
       return;
     }
@@ -33,21 +41,23 @@ export class EventEmitter<Events extends Record<string, unknown>>
     }
   }
 
-  emit<Key extends keyof Events, T = Events[Key]>(
+  emit<Key extends keyof Events>(
     event: Key,
-    ...args: EmitArgs<T>
+    ...args: EmitArgs<Events[Key]>
   ): void {
-    const existingListeners = this.all.get(event) as Listener<T>[] | undefined;
+    const existingListeners = this.all.get(event) as
+      | Listener<Events[Key]>[]
+      | undefined;
     if (existingListeners) {
       existingListeners.forEach((listener) => listener(...args));
     }
   }
 
-  once<Key extends keyof Events, T = Events[Key]>(
+  once<Key extends keyof Events>(
     event: Key,
-    listener: Listener<T>
+    listener: Listener<Events[Key]>
   ): void {
-    const onceListener: Listener<T> = (...args) => {
+    const onceListener: Listener<Events[Key]> = (...args) => {
       this.off(event, onceListener);
       listener(...args);
     };

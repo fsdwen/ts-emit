@@ -26,6 +26,10 @@ export interface Emitter<Events extends Record<EventType, unknown>> {
   all: EventHandlerMap<any>;
 
   on<Key extends keyof Events>(type: Key, handler: Listener<Events[Key]>): void;
+  once<Key extends keyof Events>(
+    type: Key,
+    handler: Listener<Events[Key]>
+  ): void;
 
   off<Key extends keyof Events>(
     type: Key,
