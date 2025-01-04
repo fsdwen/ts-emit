@@ -1,7 +1,7 @@
 {
   "name": "ts-emit",
   "version": "0.1.0",
-  "description": "",
+  "description": "A TypeScript-friendly event library with clear type inference and type safety.",
   "main": "dist/index.mjs",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -11,6 +11,10 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "dist",
+    "README.zh-CN.md"
+  ],
   "scripts": {
     "test": "vitest",
     "test:types": "tsd",
