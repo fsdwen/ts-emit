@@ -1,4 +1,4 @@
-# ts-emit
+# ts-emits
 
 [中文](README.zh-CN.md)
 
@@ -9,13 +9,13 @@ This is a TypeScript-friendly event library that fully utilizes IDE type hints d
 ### Installation
 
 ```bash
-pnpm add ts-emit
+pnpm add ts-emits
 ```
 
 ### Usage
 
 ```javascript
-import { mitt } from 'ts-emit';
+import { mitt } from 'ts-emits';
 
 const emitter = mitt()
 
@@ -36,7 +36,7 @@ emitter.off('foo', onFoo)
 #### TypeScript Example
 
 ```typescript
-import { mitt } from 'ts-emit';
+import { mitt } from 'ts-emits';
 
 // Define event types
 type Events = {
@@ -112,7 +112,7 @@ emitter.emit('event5', { key: 'example' }); // ✅ Correct usage
 #### Inheritance
 
 ```typescript
-import { EventEmitter } from 'ts-emit';
+import { EventEmitter } from 'ts-emits';
 
 class MyEmitter extends EventEmitter<Events> {
   logEvent(message: string) {

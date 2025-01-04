@@ -1,5 +1,5 @@
 {
-  "name": "ts-emit",
+  "name": "ts-emits",
   "version": "0.1.0",
   "description": "A TypeScript-friendly event library with clear type inference and type safety.",
   "main": "dist/index.mjs",

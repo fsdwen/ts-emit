@@ -1,4 +1,4 @@
-# ts-emit
+# ts-emits
 
 这是一个 `TypeScript` 友好的事件库，在使用过程中能够充分利用 `IDE` 的类型提示功能，为事件参数提供 清晰且准确的类型推断。它支持多种场景下的 参数类型定义，无论是简单参数、多个参数、数组参数，还是对象类型参数，都能确保类型安全和开发体验。
 
@@ -7,13 +7,13 @@
 ### 安装
 
 ```bash
-pnpm add ts-emit
+pnpm add ts-emits
 ```
 
 ### 使用方法
 
 ```javascript
-import { mitt } from 'ts-emit';
+import { mitt } from 'ts-emits';
 
 const emitter = mitt()
 
@@ -34,7 +34,7 @@ emitter.off('foo', onFoo)
 #### typescript
 
 ``` typescript
-import { mitt } from 'ts-emit';
+import { mitt } from 'ts-emits';
 
 // 定义事件类型
 type Events = {
@@ -111,7 +111,7 @@ emitter.emit('event5', { key: 'example' }); // ✅ 正确用法
 #### 继承
 
 ```typescript
-import { EventEmitter } from 'ts-emit';
+import { EventEmitter } from 'ts-emits';
 
 class MyEmitter extends EventEmitter<Events> {
   logEvent(message: string) {
